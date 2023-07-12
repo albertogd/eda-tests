@@ -1,4 +1,4 @@
-- name: Listen for newly added ConfigMap resources
+- name: Listen for newly created Machines and add the new host to SNOW
   hosts: localhost
   sources:
     - sabre1041.eda.k8s:
@@ -9,5 +9,6 @@
     - name: Execute Playbook
       condition: event.type == "ADDED"
       action:
-        run_playbook:
-          name: k8s-eda-demo-playbook.yaml   
+        run_job_template:
+          name: "Add host to SNOW"
+          organization: "Default"  
