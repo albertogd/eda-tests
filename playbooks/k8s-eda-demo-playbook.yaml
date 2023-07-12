@@ -1,7 +1,0 @@
-- name: Playbook test
-  hosts: localhost
-
-  tasks:
-
-    - debug:
-        msg: "Test"
