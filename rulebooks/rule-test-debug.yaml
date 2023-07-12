@@ -10,3 +10,4 @@
       condition: event.type == "ADDED"
       action:
         debug:
+          var: event
