@@ -1,0 +1,5 @@
+- name: Add host to SNOW
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: "Adding host to SNOW"
