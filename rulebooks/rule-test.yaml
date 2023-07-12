@@ -1,5 +1,5 @@
 - name: Listen for newly added ConfigMap resources
-  hosts: all
+  hosts: localhost
   sources:
     - sabre1041.eda.k8s:
         api_version: v1
