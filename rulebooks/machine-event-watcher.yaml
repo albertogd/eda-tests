@@ -13,8 +13,9 @@
           name: "Update machine in SNOW"
           organization: "Default"
           job_args:
-            machine: "{{ event.resource.involvedObject.name }}"
-            action: "delete"
+            extra_vars:
+              machine: "{{ event.resource.involvedObject.name }}"
+              action: "delete"
     - name: Notify Added machines
       condition: event.resource.reason == "Updated" and event.resource.count == 1
       action:
@@ -22,5 +23,6 @@
           name: "Update machine in SNOW"
           organization: "Default"
           job_args:
-            machine: "{{ event.resource.involvedObject.name }}" 
-            action: "add" 
+            extra_vars:
+              machine: "{{ event.resource.involvedObject.name }}" 
+              action: "add" 
