@@ -12,7 +12,24 @@
         debug:
           var: event
     - name: Notify ADD
-      condition: event.type != "DELETED"
+      condition:
+        all:
+          - event.type == "MODIFIED"
+          - event.msg == "Machine successfully created"
       action:
         debug:
           var: event
+    - name: MachineCreationSucceeded
+      condition:
+        all:
+          - event.reason == "MachineCreationSucceeded"
+      action:
+        debug:
+          msg: "Machine Creation Succeeded!!!"
+    - name: MachineCreated
+      condition:
+        all:
+          - event.type == "MachineCreated"
+      action:
+        debug:
+          msg: "MachineCreated!!!"
