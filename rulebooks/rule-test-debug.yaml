@@ -12,7 +12,7 @@
         debug:
           var: event
     - name: Notify ADD
-      condition: event.type == "ADDED"
+      condition: event.type != "DELETED"
       action:
         debug:
           var: event
