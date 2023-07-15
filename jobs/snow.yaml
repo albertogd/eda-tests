@@ -1,5 +1,5 @@
-- name: Add host to SNOW
+- name: Update machine in SNOW
   hosts: localhost
   tasks:
     - debug:
-        msg: "Adding host to SNOW"
+        msg: "{{ action }} machine {{ machine }} in SNOW"

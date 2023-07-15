@@ -10,11 +10,9 @@
       condition: event.type == "DELETED"
       action:
         debug:
-          #msg: "Machine deleted: {{ event.resource.metadata.name }}"
-          var: event.resource
+          msg: "Machine deleted: {{ event.resource.metadata.name }}"
     - name: Notify ADD
       condition: event.type != "DELETED" and event.resource.status.providerStatus.vmState == "Running"
       action:
         debug:
-          #msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }} - Reason: {{ event.resource.status.providerStatus.conditions[0].reason }}  - Reason: {{ event.resource.status.providerStatus.vmState }}"
-          var: event.resource
+          msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }} - Reason: {{ event.resource.status.providerStatus.conditions[0].reason }}  - Reason: {{ event.resource.status.providerStatus.vmState }}"

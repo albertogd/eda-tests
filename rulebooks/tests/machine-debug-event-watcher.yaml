@@ -6,12 +6,12 @@
         kind: Event
         namespace: openshift-machine-api
   rules:
-    - name: Notify deleted machines
+    - name: Notify Deleted machines
       condition: event.resource.reason == "Deleted" and event.resource.count == 1
       action:
         debug:
           msg:  "Machine deleted: {{ event.resource.involvedObject.name }}"
-    - name: Notify added machines
+    - name: Notify Added machines
       condition: event.resource.reason == "Updated" and event.resource.count == 1
       action:
         debug:
