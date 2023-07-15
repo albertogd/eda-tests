@@ -15,7 +15,7 @@
     - name: Notify ADD
       condition:
         all:
-          - event.type == "MODIFIED"
+          - event.type != "DELETED"
           - event.resource.status.providerStatus.vmState == "Running"
       action:
         debug:
