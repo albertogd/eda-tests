@@ -15,7 +15,6 @@
       condition:
         all:
           - event.type == "MODIFIED"
-          - event.resource.status.phase == "Running"
       action:
         debug:
           msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }}"
