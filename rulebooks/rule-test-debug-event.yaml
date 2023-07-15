@@ -10,7 +10,7 @@
       condition:
         all:
           - event.type == "ADDED"
-          - event.message is match("Deleted machine", ignorecase=true) 
+          - event.message is match("Deleted machine.*", ignorecase=true) 
       action:
         debug:
           var: event
@@ -18,7 +18,7 @@
       condition:
         all:
           - event.type == "ADDED"
-          - event.message is match("Updated machine", ignorecase=true) 
+          - event.message is match("Updated machine.*", ignorecase=true) 
       action:
         debug:
           var: event
