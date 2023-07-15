@@ -6,8 +6,19 @@
         kind: Event
         namespace: openshift-machine-api
   rules:
-    - name: Notify
-      condition: event.type != "a"
+    - name: Notify deleted machines
+      condition:
+        all:
+          - event.type == "ADDED"
+          - event.message is match("Deleted machine", ignorecase=true) 
+      action:
+        debug:
+          var: event
+    - name: Notify added machies
+      condition:
+        all:
+          - event.type == "ADDED"
+          - event.message is match("Updated machine", ignorecase=true) 
       action:
         debug:
           var: event
