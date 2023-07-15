@@ -17,4 +17,4 @@
           - event.type == "MODIFIED"
       action:
         debug:
-          msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }}"
+          msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }} - Reason: {{ event.resource.status.providerStatus.conditions[0].reason }}  - Reason: {{ event.resource.status.providerStatus.vmState }}"
