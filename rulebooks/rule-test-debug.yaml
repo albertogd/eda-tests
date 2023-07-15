@@ -10,23 +10,12 @@
       condition: event.type == "DELETED"
       action:
         debug:
-          var: event
+          msg: "Machine deleted: {{ event.resource.metadata.name }}"
     - name: Notify ADD
-      condition: event.type == "MODIFIED"
-      action:
-        debug:
-          var: event
-    - name: MachineCreationSucceeded
       condition:
         all:
-          - event.reason == "MachineCreationSucceeded"
+          - event.type == "MODIFIED"
+          - event.resource.status.phase == "Running"
       action:
         debug:
-          msg: "Machine Creation Succeeded!!!"
-    - name: MachineCreated
-      condition:
-        all:
-          - event.type == "MachineCreated"
-      action:
-        debug:
-          msg: "MachineCreated!!!"
+          msg: "Machine created: {{ event.resource.metadata.name }} - Status: {{ event.resource.status.providerStatus.conditions[0].type }}"
