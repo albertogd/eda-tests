@@ -1,0 +1,13 @@
+- name: Listen for Machine resource events
+  hosts: all
+  sources:
+    - sabre1041.eda.k8s:
+        api_version: v1 
+        kind: Event
+        namespace: openshift-machine-api
+  rules:
+    - name: Notify
+      condition: event.type != "a"
+      action:
+        debug:
+          var: event
