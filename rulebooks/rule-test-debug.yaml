@@ -1,12 +1,13 @@
-- name: Listen for newly added ConfigMap resources
-  hosts: localhost
+- name: Listen for Machine resource events
+  hosts: all
   sources:
     - sabre1041.eda.k8s:
-        api_version: v1
-        kind: ConfigMap
-        namespace: default
+        api_version: machine.openshift.io/v1beta1
+        kind: Machine
+        namespace: openshift-machine-api
   rules:
     - name: Notify
-      condition: event.type == "ADDED"
+      condition: event.output is defined
       action:
         debug:
+          var: event

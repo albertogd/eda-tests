@@ -1,14 +1,14 @@
-- name: Listen for newly created Machines and add the new host to SNOW
-  hosts: localhost
+- name: Listen for Machine resource events
+  hosts: all
   sources:
     - sabre1041.eda.k8s:
-        api_version: v1
-        kind: ConfigMap
-        namespace: default
+        api_version: machine.openshift.io/v1beta1
+        kind: Machine
+        namespace: openshift-machine-api
   rules:
-    - name: Execute Playbook
-      condition: event.type == "ADDED"
+    - name: Notify
+      condition: event.output is defined
       action:
         run_job_template:
           name: "Add host to SNOW"
-          organization: "Default"  
+          organization: "Default"
