@@ -13,9 +13,8 @@
           name: "Update machine in SNOW"
           organization: "Default"
           set_facts:
-            fact:
-              machine: "{{ event.resource.involvedObject.name }}"
-              action: "delete"
+            machine: "{{ event.resource.involvedObject.name }}"
+            action: "delete"
     - name: Notify Added machines
       condition: event.resource.reason == "Updated" and event.resource.count == 1
       action:
@@ -23,6 +22,5 @@
           name: "Update machine in SNOW"
           organization: "Default"
           set_facts:
-            fact:
-              machine: "{{ event.resource.involvedObject.name }}" 
-              action: "add" 
+            machine: "{{ event.resource.involvedObject.name }}" 
+            action: "add" 
