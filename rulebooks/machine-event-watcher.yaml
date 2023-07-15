@@ -12,7 +12,7 @@
         run_job_template:
           name: "Update machine in SNOW"
           organization: "Default"
-          set_facts:
+          job_args:
             machine: "{{ event.resource.involvedObject.name }}"
             action: "delete"
     - name: Notify Added machines
@@ -21,6 +21,6 @@
         run_job_template:
           name: "Update machine in SNOW"
           organization: "Default"
-          set_facts:
+          job_args:
             machine: "{{ event.resource.involvedObject.name }}" 
             action: "add" 
