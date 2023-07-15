@@ -7,7 +7,6 @@
         namespace: openshift-machine-api
   rules:
     - name: Notify
-      condition: event.output is defined
       action:
         debug:
           var: event
