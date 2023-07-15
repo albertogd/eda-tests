@@ -12,10 +12,7 @@
         debug:
           var: event
     - name: Notify ADD
-      condition:
-        all:
-          - event.type == "MODIFIED"
-          - event.msg == "Machine successfully created"
+      condition: event.type == "MODIFIED"
       action:
         debug:
           var: event
