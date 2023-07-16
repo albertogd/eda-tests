@@ -5,6 +5,9 @@
         api_version: v1 
         kind: Event
         namespace: openshift-machine-api
+        user: "{{ k8s_user }}"
+        password: "{{ k8s_pass }}"
+        host: "{{ k8s_host }}"
   rules:
     - name: Notify Deleted machines
       condition: event.resource.reason == "Deleted" and event.resource.count == 1
